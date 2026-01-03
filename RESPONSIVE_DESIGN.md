@@ -35,7 +35,7 @@ Your VOGUESTORE ecommerce application has been fully optimized for responsive de
 #### Responsive Features:
 
 - **Grid Layout**: 1 column (mobile) → 2 columns (sm) → 3 columns (md) → 4 columns (lg) → 5 columns (xl)
-- **Images**: `sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"`
+- **Images**: `sizes="(max-inline-size: 768px) 50vw, (max-inline-size: 1200px) 33vw, 20vw"`
 - **Badges**: Responsive font sizes and padding
 - **Content Padding**: `p-4 sm:p-6 md:p-8`
 - **Button Size**: Adaptive padding and text size
@@ -49,7 +49,7 @@ Your VOGUESTORE ecommerce application has been fully optimized for responsive de
 - **Gaps**: Responsive spacing from `gap-4` (mobile) to `gap-8 lg:gap-x-8 lg:gap-y-16` (desktop)
 - **Heading**: Uses `clamp()` for fluid typography
   - Mobile: 2rem
-  - Desktop: 3.5rem
+  - Deskinset-block-start: 3.5rem
 - **Category Filters**: Horizontal scroll on mobile, flex row on desktop
 - **Stats Section**: Single column (mobile) → 3 columns (tablet+)
 
@@ -80,7 +80,7 @@ Your VOGUESTORE ecommerce application has been fully optimized for responsive de
 - **Image Size**:
   - Mobile: `aspect-square` with full width
   - Tablet: `w-32 aspect-[3/4]`
-  - Desktop: `w-40`
+  - Deskinset-block-start: `w-40`
 - **Summary Box**:
   - Sticky positioning with responsive top offset
   - Responsive padding and text sizes
@@ -191,8 +191,8 @@ Example: `text-3xl sm:text-4xl md:text-5xl lg:text-7xl`
 
 ```css
 img {
-  max-width: 100%;
-  height: auto;
+  max-inline-size: 100%;
+  block-size: auto;
 }
 ```
 
