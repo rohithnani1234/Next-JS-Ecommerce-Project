@@ -84,21 +84,21 @@ const Chatbot = () => {
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="fixed bottom-24 right-6 w-[350px] md:w-[400px] h-[600px] bg-white/90 backdrop-blur-xl border border-white/20 shadow-2xl rounded-[2rem] z-[1000] flex flex-col overflow-hidden ring-1 ring-gray-900/5"
+            className="fixed bottom-20 sm:bottom-24 right-4 sm:right-6 w-[calc(100vw-2rem)] sm:w-[380px] md:w-[420px] lg:w-[450px] h-[70vh] sm:h-[600px] max-h-[700px] bg-white/90 backdrop-blur-xl border border-white/20 shadow-2xl rounded-[1.5rem] sm:rounded-[2rem] z-[1000] flex flex-col overflow-hidden ring-1 ring-gray-900/5"
           >
             {/* Header */}
-            <div className="bg-gradient-to-r from-gray-900 to-black p-6 flex justify-between items-center text-white">
-              <div className="flex items-center space-x-3">
-                <div className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center backdrop-blur-md border border-white/10">
-                  <Sparkles className="h-4 w-4 text-blue-400" />
+            <div className="bg-gradient-to-r from-gray-900 to-black p-4 sm:p-6 flex justify-between items-center text-white">
+              <div className="flex items-center space-x-2 sm:space-x-3">
+                <div className="h-8 w-8 sm:h-10 sm:w-10 rounded-full bg-white/10 flex items-center justify-center backdrop-blur-md border border-white/10">
+                  <Sparkles className="h-3 w-3 sm:h-4 sm:w-4 text-blue-400" />
                 </div>
                 <div>
-                  <h3 className="font-black text-sm uppercase tracking-widest">
+                  <h3 className="font-black text-xs sm:text-sm uppercase tracking-widest">
                     Protocol AI
                   </h3>
-                  <div className="flex items-center space-x-1.5 mt-1">
+                  <div className="flex items-center space-x-1.5 mt-0.5 sm:mt-1">
                     <div className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />
-                    <span className="text-[9px] font-bold text-gray-400 uppercase tracking-wider">
+                    <span className="text-[8px] sm:text-[9px] font-bold text-gray-400 uppercase tracking-wider">
                       Online
                     </span>
                   </div>
@@ -108,7 +108,7 @@ const Chatbot = () => {
                 onClick={() => setIsOpen(false)}
                 className="h-8 w-8 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors"
               >
-                <X className="h-5 w-5 text-gray-400 hover:text-white" />
+                <X className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400 hover:text-white" />
               </button>
             </div>
 

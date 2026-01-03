@@ -13,7 +13,7 @@ const Hero = () => {
   const yRange2 = useTransform(scrollY, [0, 300], [0, -50]);
 
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden bg-white">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white pt-20 sm:pt-24 md:pt-32">
       {/* Editorial Background */}
       <motion.div
         className="absolute inset-0 z-0"
@@ -27,13 +27,13 @@ const Hero = () => {
           priority
         />
         <motion.div
-          className="absolute top-0 right-0 w-[400px] h-[400px] bg-blue-600/5 blur-[120px] rounded-full pointer-events-none"
+          className="absolute top-0 right-0 w-[300px] sm:w-[400px] h-[300px] sm:h-[400px] bg-blue-600/5 blur-[120px] rounded-full pointer-events-none"
           style={{ y: yRange2 }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-white via-white/5 to-white" />
       </motion.div>
 
-      <div className="container mx-auto px-6 md:px-12 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 relative z-10 py-8 sm:py-12">
         <div className="max-w-[1400px] mx-auto">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -41,15 +41,15 @@ const Hero = () => {
             transition={{ duration: 1.2, ease: "easeOut" }}
             className="flex flex-col items-center text-center"
           >
-            <div className="mb-12 flex items-center space-x-6 overflow-hidden">
-              <span className="h-px w-20 bg-blue-600/30" />
-              <span className="text-blue-600 font-black uppercase tracking-[0.8em] text-[10px] whitespace-nowrap">
+            <div className="mb-6 sm:mb-8 md:mb-12 flex items-center gap-3 sm:gap-6 overflow-hidden flex-wrap justify-center">
+              <span className="h-px w-12 sm:w-20 bg-blue-600/30" />
+              <span className="text-blue-600 font-black uppercase tracking-[0.8em] text-[8px] sm:text-[10px] whitespace-nowrap">
                 Elite Curatorial Protocol
               </span>
-              <span className="h-px w-20 bg-blue-600/30" />
+              <span className="h-px w-12 sm:w-20 bg-blue-600/30" />
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-black leading-[0.9] mb-8 uppercase flex flex-col items-center">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tighter text-black leading-[0.9] mb-4 sm:mb-6 md:mb-8 uppercase flex flex-col items-center">
               <motion.span
                 initial={{ x: -100, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
@@ -61,7 +61,7 @@ const Hero = () => {
                 initial={{ x: 100, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ duration: 1, delay: 0.4 }}
-                className="italic font-light text-blue-600 -mt-2 md:-mt-4"
+                className="italic font-light text-blue-600 -mt-1 sm:-mt-2 md:-mt-3 lg:-mt-4"
               >
                 Identities.
               </motion.span>
@@ -71,7 +71,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="text-gray-400 text-xs md:text-sm font-medium max-w-lg mx-auto mb-12 leading-relaxed uppercase tracking-[0.2em]"
+              className="text-gray-400 text-[10px] sm:text-xs md:text-sm font-medium max-w-lg mx-auto mb-8 sm:mb-10 md:mb-12 leading-relaxed uppercase tracking-[0.2em] px-2"
             >
               "We transcend commerce to curate the benchmarks of modern living."
             </motion.p>
@@ -80,7 +80,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1 }}
-              className="flex flex-col md:flex-row items-center justify-center gap-8"
+              className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8 w-full px-2 sm:px-0"
             >
               <button
                 onClick={() =>
@@ -88,16 +88,16 @@ const Hero = () => {
                     .getElementById("products")
                     ?.scrollIntoView({ behavior: "smooth" })
                 }
-                className="group relative bg-black text-white px-12 py-5 rounded-[2rem] font-black text-[10px] uppercase tracking-[0.4em] transition-all hover:bg-blue-600 shadow-xl hover:-translate-y-1 overflow-hidden"
+                className="group relative bg-black text-white px-6 sm:px-10 md:px-12 py-4 sm:py-5 rounded-lg sm:rounded-[2rem] font-black text-[8px] sm:text-[9px] md:text-[10px] uppercase tracking-[0.4em] transition-all hover:bg-blue-600 shadow-xl hover:-translate-y-1 overflow-hidden w-full sm:w-auto"
               >
                 <div className="absolute inset-0 bg-white/10 -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
-                <span className="relative z-10 flex items-center space-x-4">
+                <span className="relative z-10 flex items-center justify-center gap-2 sm:gap-4">
                   <span>Enter the Vault</span>
-                  <ArrowRight className="h-4 w-4" />
+                  <ArrowRight className="h-3 sm:h-4 w-3 sm:w-4" />
                 </span>
               </button>
 
-              <button className="group relative flex items-center space-x-4 text-gray-900 font-black text-[9px] uppercase tracking-[0.3em] px-8 py-5 rounded-[2rem] border border-gray-100 bg-white/50 backdrop-blur-md hover:bg-white transition-all hover:-translate-y-1">
+              <button className="group relative flex items-center justify-center gap-2 sm:gap-4 text-gray-900 font-black text-[8px] sm:text-[9px] md:text-[10px] uppercase tracking-[0.3em] px-6 sm:px-8 py-4 sm:py-5 rounded-lg sm:rounded-[2rem] border border-gray-100 bg-white/50 backdrop-blur-md hover:bg-white transition-all hover:-translate-y-1 w-full sm:w-auto">
                 <div className="h-8 w-8 rounded-full border border-black/5 flex items-center justify-center group-hover:border-blue-600/30 transition-colors">
                   <Play className="h-3 w-3 fill-current ml-0.5 text-blue-600" />
                 </div>

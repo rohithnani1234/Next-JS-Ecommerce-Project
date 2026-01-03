@@ -71,15 +71,15 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
 
         {/* Badges */}
-        <div className="absolute top-6 left-6 flex flex-wrap gap-2 z-10">
+        <div className="absolute top-3 sm:top-4 md:top-6 left-3 sm:left-4 md:left-6 flex flex-wrap gap-1.5 sm:gap-2 z-10">
           {product.isFeatured && (
-            <span className="bg-blue-600 text-white px-3 py-1 rounded-lg shadow-xl text-[8px] font-black uppercase tracking-[0.2em] flex items-center">
-              <span className="mr-1.5 h-1 w-1 bg-white rounded-full animate-pulse" />
+            <span className="bg-blue-600 text-white px-2 sm:px-3 py-0.5 sm:py-1 rounded-lg shadow-xl text-[7px] sm:text-[8px] font-black uppercase tracking-[0.2em] flex items-center">
+              <span className="mr-1 h-0.5 w-0.5 sm:h-1 sm:w-1 bg-white rounded-full animate-pulse" />
               Elite protocol
             </span>
           )}
           {product.isNew && (
-            <span className="bg-white/90 backdrop-blur-md text-gray-900 px-3 py-1 rounded-lg shadow-xl text-[8px] font-black uppercase tracking-[0.2em] border border-gray-100">
+            <span className="bg-white/90 backdrop-blur-md text-gray-900 px-2 sm:px-3 py-0.5 sm:py-1 rounded-lg shadow-xl text-[7px] sm:text-[8px] font-black uppercase tracking-[0.2em] border border-gray-100">
               New Arrival
             </span>
           )}
@@ -87,37 +87,39 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       </Link>
 
       {/* Quick Actions */}
-      <div className="absolute top-6 right-6 translate-x-12 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-500 flex flex-col gap-3 z-20">
+      <div className="absolute top-3 sm:top-4 md:top-6 right-3 sm:right-4 md:right-6 translate-x-12 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-500 flex flex-col gap-2 sm:gap-3 z-20">
         <button
           onClick={handleToggleWishlist}
-          className={`backdrop-blur-md p-4 rounded-2xl shadow-2xl transition-all duration-300 ${
+          className={`backdrop-blur-md p-2.5 sm:p-3 md:p-4 rounded-xl sm:rounded-2xl shadow-2xl transition-all duration-300 ${
             isLiked
               ? "bg-red-500 text-white hover:bg-red-600"
               : "bg-white/90 text-black hover:bg-black hover:text-white"
           }`}
         >
-          <Heart className={`h-5 w-5 ${isLiked ? "fill-current" : ""}`} />
+          <Heart
+            className={`h-4 w-4 sm:h-5 sm:w-5 ${isLiked ? "fill-current" : ""}`}
+          />
         </button>
         <button
           onClick={handleAddToCart}
-          className="bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-2xl hover:bg-black text-black hover:text-white transition-all duration-300"
+          className="bg-white/90 backdrop-blur-md p-2.5 sm:p-3 md:p-4 rounded-xl sm:rounded-2xl shadow-2xl hover:bg-black text-black hover:text-white transition-all duration-300"
         >
-          <ShoppingCart className="h-5 w-5" />
+          <ShoppingCart className="h-4 w-4 sm:h-5 sm:w-5" />
         </button>
       </div>
 
       {/* Content */}
-      <div className="p-8 flex flex-col flex-grow text-left">
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center space-x-2">
-            <span className="h-1.5 w-1.5 rounded-full bg-blue-600" />
-            <span className="text-[9px] font-black text-blue-600 uppercase tracking-[0.4em]">
+      <div className="p-4 sm:p-6 md:p-8 flex flex-col flex-grow text-left">
+        <div className="flex items-center justify-between mb-2 sm:mb-3 md:mb-4 gap-2">
+          <div className="flex items-center space-x-1.5 sm:space-x-2 min-w-0">
+            <span className="h-1 w-1 sm:h-1.5 sm:w-1.5 rounded-full bg-blue-600 flex-shrink-0" />
+            <span className="text-[7px] sm:text-[8px] md:text-[9px] font-black text-blue-600 uppercase tracking-[0.4em] truncate">
               {product.category}
             </span>
           </div>
-          <div className="flex items-center space-x-1.5 bg-gray-50 px-2 py-1 rounded-md border border-gray-100">
-            <Star className="h-2.5 w-2.5 fill-yellow-400 text-yellow-400" />
-            <span className="text-[10px] font-black text-gray-900">
+          <div className="flex items-center space-x-1 bg-gray-50 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-md border border-gray-100 flex-shrink-0">
+            <Star className="h-2 w-2 sm:h-2.5 sm:w-2.5 fill-yellow-400 text-yellow-400" />
+            <span className="text-[8px] sm:text-[10px] font-black text-gray-900">
               {product.rating}
             </span>
           </div>
@@ -125,30 +127,32 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
         <Link
           href={`/products/${product.id}`}
-          className="block mb-6 group/title"
+          className="block mb-3 sm:mb-4 md:mb-6 group/title"
         >
-          <h3 className="text-lg font-black text-gray-900 group-hover/title:text-blue-600 transition-colors mb-3 leading-tight tracking-tighter uppercase">
+          <h3 className="text-sm sm:text-base md:text-lg font-black text-gray-900 group-hover/title:text-blue-600 transition-colors mb-1.5 sm:mb-2 md:mb-3 leading-tight tracking-tighter uppercase line-clamp-2">
             {product.name}
           </h3>
-          <p className="text-gray-400 text-xs line-clamp-2 leading-relaxed font-medium italic">
+          <p className="text-gray-400 text-[10px] sm:text-xs line-clamp-2 leading-relaxed font-medium italic">
             {product.description}
           </p>
         </Link>
 
         <div className="mt-auto">
-          <div className="h-px bg-gray-100 w-full mb-6" />
-          <div className="flex items-center justify-between">
-            <span className="text-xl font-black text-gray-900 tracking-tighter">
+          <div className="h-px bg-gray-100 w-full mb-3 sm:mb-4 md:mb-6" />
+          <div className="flex items-center justify-between gap-3 flex-col-reverse sm:flex-row">
+            <span className="text-base sm:text-lg md:text-xl font-black text-gray-900 tracking-tighter">
               {formatPrice(product.price)}
             </span>
             <button
               onClick={handleAddToCart}
-              className="group/btn relative bg-black hover:bg-blue-600 text-white px-5 py-4 rounded-2xl transition-all shadow-xl shadow-black/10 flex flex-col items-center justify-center min-w-[100px]"
+              className="w-full sm:w-auto group/btn relative bg-black hover:bg-blue-600 text-white px-3 sm:px-5 py-3 sm:py-4 rounded-lg sm:rounded-2xl transition-all shadow-xl shadow-black/10 flex flex-col items-center justify-center min-w-[80px] sm:min-w-[100px]"
             >
-              <span className="text-[10px] font-black uppercase tracking-[0.2em] mb-1">
+              <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] mb-0.5 sm:mb-1">
                 Archive
               </span>
-              <span className="text-sm font-black leading-none">+</span>
+              <span className="text-xs sm:text-sm font-black leading-none">
+                +
+              </span>
             </button>
           </div>
         </div>

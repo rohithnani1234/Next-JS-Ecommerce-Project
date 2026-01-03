@@ -62,16 +62,16 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
         className={cn(
           "fixed top-0 left-0 right-0 z-[100] transition-all duration-300 border-b",
           isScrolled
-            ? "bg-white/95 backdrop-blur-2xl border-gray-100 py-4 shadow-xl shadow-black/5"
-            : "bg-white/50 backdrop-blur-md border-transparent py-6"
+            ? "bg-white/95 backdrop-blur-2xl border-gray-100 py-3 md:py-4 shadow-xl shadow-black/5"
+            : "bg-white/50 backdrop-blur-md border-transparent py-4 md:py-6"
         )}
       >
-        <div className="max-w-7xl mx-auto flex items-center justify-between relative">
+        <div className="max-w-7xl mx-auto flex items-center justify-between relative px-4 sm:px-6 md:px-8">
           {/* Logo - Hidden when search is wide on smaller desktops */}
           <Link
             href="/"
             className={cn(
-              "text-3xl font-black tracking-tighter transition-all duration-300",
+              "text-xl sm:text-2xl md:text-3xl font-black tracking-tighter transition-all duration-300 whitespace-nowrap",
               isScrolled ? "text-black" : "text-black"
             )}
           >
@@ -290,26 +290,26 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 bottom-0 w-full max-w-md bg-white z-[101] shadow-2xl flex flex-col transition-colors duration-500"
+              className="fixed top-0 right-0 bottom-0 w-full sm:w-full md:max-w-md bg-white z-[101] shadow-2xl flex flex-col transition-colors duration-500"
             >
-              <div className="p-10 border-b border-gray-100 flex items-center justify-between">
-                <div>
-                  <h2 className="text-3xl font-black tracking-tighter text-gray-900">
+              <div className="p-6 sm:p-8 md:p-10 border-b border-gray-100 flex items-center justify-between gap-4">
+                <div className="min-w-0">
+                  <h2 className="text-2xl sm:text-3xl font-black tracking-tighter text-gray-900">
                     Private Bag
                   </h2>
-                  <p className="text-gray-500 text-[9px] font-black uppercase tracking-[0.4em] mt-2">
+                  <p className="text-gray-500 text-[8px] sm:text-[9px] font-black uppercase tracking-[0.4em] mt-2">
                     {totalItems} artifacts identified
                   </p>
                 </div>
                 <button
                   onClick={() => setIsCartOpen(false)}
-                  className="h-12 w-12 flex items-center justify-center hover:bg-gray-50 rounded-full transition-colors"
+                  className="h-12 w-12 flex flex-shrink-0 items-center justify-center hover:bg-gray-50 rounded-full transition-colors"
                 >
                   <X className="h-6 w-6 text-gray-400" />
                 </button>
               </div>
 
-              <div className="flex-grow overflow-y-auto p-10 space-y-12 no-scrollbar">
+              <div className="flex-grow overflow-y-auto p-6 sm:p-8 md:p-10 space-y-8 sm:space-y-10 md:space-y-12 no-scrollbar">
                 {cart.length === 0 ? (
                   <div className="h-full flex flex-col items-center justify-center text-center space-y-10 italic">
                     <div className="h-40 w-40 bg-gray-50 rounded-full flex items-center justify-center border border-gray-100 shadow-inner">
@@ -332,56 +332,59 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
                   </div>
                 ) : (
                   cart.map((item) => (
-                    <div key={item.id} className="flex gap-8 group">
-                      <div className="relative h-32 w-32 bg-gray-50 rounded-[2rem] overflow-hidden flex-shrink-0 border border-gray-100 transition-transform duration-500 group-hover:scale-105">
+                    <div
+                      key={item.id}
+                      className="flex gap-4 sm:gap-6 md:gap-8 group"
+                    >
+                      <div className="relative h-24 w-24 sm:h-28 sm:w-28 md:h-32 md:w-32 bg-gray-50 rounded-[2rem] overflow-hidden flex-shrink-0 border border-gray-100 transition-transform duration-500 group-hover:scale-105">
                         <Image
                           src={item.image}
                           alt={item.name}
                           fill
-                          className="object-cover p-3 rounded-[2rem]"
+                          className="object-cover p-2 sm:p-3 rounded-[2rem]"
                         />
                       </div>
-                      <div className="flex-grow flex flex-col justify-between py-1">
+                      <div className="flex-grow flex flex-col justify-between py-1 min-w-0">
                         <div>
-                          <p className="text-[10px] font-black text-blue-600 uppercase tracking-[0.3em] mb-2">
+                          <p className="text-[8px] sm:text-[9px] md:text-[10px] font-black text-blue-600 uppercase tracking-[0.3em] mb-1 sm:mb-2">
                             {item.category}
                           </p>
-                          <h3 className="font-black text-gray-900 text-lg leading-tight mb-2 group-hover:text-blue-600 transition-colors tracking-tighter">
+                          <h3 className="font-black text-gray-900 text-sm sm:text-base md:text-lg leading-tight mb-1 sm:mb-2 group-hover:text-blue-600 transition-colors tracking-tighter line-clamp-2">
                             {item.name}
                           </h3>
                         </div>
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center space-x-4 bg-gray-100 rounded-2xl p-1 border border-gray-200">
+                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-3">
+                          <div className="flex items-center space-x-2 sm:space-x-3 md:space-x-4 bg-gray-100 rounded-2xl p-1 border border-gray-200">
                             <button
                               onClick={() =>
                                 updateQuantity(item.id, item.quantity - 1)
                               }
-                              className="w-10 h-10 flex items-center justify-center hover:bg-white rounded-xl transition-all font-black text-gray-400 hover:text-black"
+                              className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center hover:bg-white rounded-xl transition-all font-black text-gray-400 hover:text-black text-sm"
                             >
                               —
                             </button>
-                            <span className="text-sm font-black w-4 text-center text-gray-900">
+                            <span className="text-xs sm:text-sm font-black w-4 text-center text-gray-900">
                               {item.quantity}
                             </span>
                             <button
                               onClick={() =>
                                 updateQuantity(item.id, item.quantity + 1)
                               }
-                              className="w-10 h-10 flex items-center justify-center hover:bg-white rounded-xl transition-all font-black text-gray-400 hover:text-black"
+                              className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center hover:bg-white rounded-xl transition-all font-black text-gray-400 hover:text-black text-sm"
                             >
                               +
                             </button>
                           </div>
-                          <span className="font-black text-gray-900 text-lg tracking-tighter">
+                          <span className="font-black text-gray-900 text-base sm:text-lg md:text-lg tracking-tighter">
                             {formatPrice(item.price * item.quantity)}
                           </span>
                         </div>
                       </div>
                       <button
                         onClick={() => removeFromCart(item.id)}
-                        className="p-3 text-gray-300 hover:text-red-500 hover:bg-red-50 rounded-full transition-all self-start"
+                        className="p-2 sm:p-3 text-gray-300 hover:text-red-500 hover:bg-red-50 rounded-full transition-all self-start flex-shrink-0"
                       >
-                        <Trash2 className="h-5 w-5" />
+                        <Trash2 className="h-4 w-4 sm:h-5 sm:w-5" />
                       </button>
                     </div>
                   ))
@@ -389,31 +392,31 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
               </div>
 
               {cart.length > 0 && (
-                <div className="p-10 bg-gray-50 border-t border-gray-100 space-y-8">
-                  <div className="space-y-4">
-                    <div className="flex justify-between text-[10px] font-black uppercase tracking-[0.4em] text-gray-400">
+                <div className="p-6 sm:p-8 md:p-10 bg-gray-50 border-t border-gray-100 space-y-6 sm:space-y-8">
+                  <div className="space-y-3 sm:space-y-4">
+                    <div className="flex justify-between text-[8px] sm:text-[9px] md:text-[10px] font-black uppercase tracking-[0.4em] text-gray-400">
                       <span>Valuation</span>
                       <span className="text-gray-900">
                         {formatPrice(totalPrice)}
                       </span>
                     </div>
-                    <div className="flex justify-between text-[10px] font-black uppercase tracking-[0.4em] text-gray-400">
+                    <div className="flex justify-between text-[8px] sm:text-[9px] md:text-[10px] font-black uppercase tracking-[0.4em] text-gray-400">
                       <span>Logistics</span>
                       <span className="text-blue-600 font-black italic">
                         Archival Delivery
                       </span>
                     </div>
-                    <div className="h-px bg-gray-200 my-6" />
-                    <div className="flex justify-between items-end">
-                      <span className="text-xl font-black tracking-tighter text-gray-900">
+                    <div className="h-px bg-gray-200 my-4 sm:my-6" />
+                    <div className="flex justify-between items-end gap-2">
+                      <span className="text-lg sm:text-xl font-black tracking-tighter text-gray-900">
                         Total Capital
                       </span>
-                      <span className="text-3xl font-black text-gray-900 tracking-tighter">
+                      <span className="text-2xl sm:text-3xl font-black text-gray-900 tracking-tighter">
                         {formatPrice(totalPrice)}
                       </span>
                     </div>
                   </div>
-                  <button className="w-full bg-black text-white py-7 rounded-[2rem] font-black text-xs uppercase tracking-[0.4em] hover:bg-blue-600 transition-all shadow-3xl active:scale-[0.98]">
+                  <button className="w-full bg-black text-white py-5 sm:py-6 md:py-7 rounded-[2rem] font-black text-[9px] sm:text-[10px] md:text-xs uppercase tracking-[0.4em] hover:bg-blue-600 transition-all shadow-3xl active:scale-[0.98]">
                     Secure Archival Checkout
                   </button>
                 </div>

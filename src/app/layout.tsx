@@ -19,6 +19,7 @@ export const metadata: Metadata = {
   title: "VOGUESTORE | Premium Ecommerce",
   description:
     "Curated collection of premium products for the modern lifestyle.",
+  viewport: "width=device-width, initial-scale=1, maximum-scale=5",
 };
 
 import { WishlistProvider } from "@/context/WishlistContext";
